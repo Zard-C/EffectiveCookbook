@@ -3,4 +3,5 @@ project(effective_cpp)
 
 set (CMAKE_CXX_STANDARD 17)
 
-add_subdirectory(code/code1)
+add_subdirectory(code/Item1)
+add_subdirectory(code/Item2)
