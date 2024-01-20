@@ -8,8 +8,7 @@
 //  int x3 = {27};
 //  int x4{27};
 
-template <typename T>
-void f(std::initializer_list<T> initList)
+template <typename T> void f(std::initializer_list<T> initList)
 {
     printf("T type: %s\n", boost::typeindex::type_id_with_cvr<T>().pretty_name().c_str());
     printf("initList type: %s\n", boost::typeindex::type_id_with_cvr<decltype(initList)>().pretty_name().c_str());
@@ -34,10 +33,10 @@ void f(std::initializer_list<T> initList)
 
 int main()
 {
-    auto x1 = 27; // x has type int, ParamType is T itself
-    auto x2(27); // x has type int, ParamType is T itself
+    auto x1 = 27;   // x has type int, ParamType is T itself
+    auto x2(27);    // x has type int, ParamType is T itself
     auto x3 = {27}; // x has type std::initializer_list<int>, ParamType is std::initializer_list<int>
-    auto x4{27}; // x has type int, ParamType is int
+    auto x4{27};    // x has type int, ParamType is int
 
     // auto x5 = {1, 2, 3.0}; // wrong! can not deduce type from initializer list
 
@@ -46,11 +45,7 @@ int main()
     printf("x3 type: %s\n", boost::typeindex::type_id_with_cvr<decltype(x3)>().pretty_name().c_str());
     printf("x4 type: %s\n", boost::typeindex::type_id_with_cvr<decltype(x4)>().pretty_name().c_str());
 
-
     f({1, 2, 3}); // T is int, ParamType is std::initializer_list<int>
-
-
-
 
     return 0;
 }
