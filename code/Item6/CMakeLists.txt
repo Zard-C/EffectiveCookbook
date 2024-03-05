@@ -1,0 +1,5 @@
+find_package(Boost REQUIRED)
+include_directories(${Boost_INCLUDE_DIRS})
+
+add_executable(undesired_typed_deduction auto_undesired_type_deduction.cpp)
+add_executable(force_typed_deduction use_explicit_type_instead.cpp)
