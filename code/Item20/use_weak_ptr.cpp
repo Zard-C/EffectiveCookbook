@@ -3,6 +3,11 @@
 #include <memory>
 #include <unordered_map>
 
+
+// • Use std::weak_ptr for std::shared_ptr-like pointers that can dangle.
+// • Potential use cases for std::weak_ptr include caching, observer lists, and the
+// prevention of std::shared_ptr cycles.
+
 void basic_usage()
 {
     auto spw = std::make_shared<int>(42); // after spw is constructed,
