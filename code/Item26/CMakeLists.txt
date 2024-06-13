@@ -1,0 +1,5 @@
+find_package(Boost REQUIRED)
+include_directories(${Boost_INCLUDE_DIRS})
+
+add_executable(avoid_overload_universal_ref avoid_overload_universal_ref.cpp)
+target_link_libraries(avoid_overload_universal_ref ${Boost_LIBRARIES})
