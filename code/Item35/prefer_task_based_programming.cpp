@@ -1,0 +1,42 @@
+#include <boost/type_index.hpp>
+#include <future>
+#include <stdio.h>
+#include <thread>
+
+// * The std::thread API offers no direct way to get return values from
+//   asynchronously run functions, and if those functions throw, the program is
+//   terminated.
+
+// * Thread-based programming calls for manual management of thread exhaustion,
+//   oversubscription, load balancing, and adaptation to new platforms.
+
+// * Task-based programming via std::async with the default launch policy handles
+//   most of these issues for you.
+
+int doAsyncWork()
+{
+    printf("Async work\n");
+    return 0;
+}
+
+void doThreadBasedWork()
+{
+    std::thread t([]() { doAsyncWork(); });
+    t.join();
+}
+
+void doTaskBasedWork()
+{
+    auto fut = std::async(doAsyncWork);
+    fut.get();
+}
+
+int main()
+{
+    printf("Thread based work\n");
+    doThreadBasedWork();
+
+    printf("Task based work\n");
+    doTaskBasedWork();
+    return 0;
+}
